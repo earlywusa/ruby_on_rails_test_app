@@ -1,4 +1,6 @@
 class MyarticlesController < ApplicationController
+  before_action :set_article, only: [:edit, :update, :show, :destroy]
+
   def index
     @all_articles = Myarticle.all
 
@@ -9,7 +11,7 @@ class MyarticlesController < ApplicationController
   end
 
   def edit
-    @myarticle = Myarticle.find(params[:id])
+    # @myarticle = set_article
   end
 
   def create
@@ -29,7 +31,7 @@ class MyarticlesController < ApplicationController
   end
 
   def update
-    @myarticle = Myarticle.find(params[:id])
+    # @myarticle = set_article
     if @myarticle.update(article_params)
       flash[:notice] = "Article was successfully updated"
       redirect_to myarticle_path(@myarticle)
@@ -40,17 +42,21 @@ class MyarticlesController < ApplicationController
   end
 
   def show
-    @myarticle = Myarticle.find(params[:id])
+    # @myarticle = set_article
   end
 
   def destroy
-    @myarticle = Myarticle.find(params[:id])
+    # @myarticle = set_article
     @myarticle.destroy
     flash[:notice] = "article was deleted"
     redirect_to myarticles_path
   end
 
   private
+  def set_article
+    @myarticle = Myarticle.find(params[:id])
+  end
+
   def article_params
     params.require(:myarticle).permit(:title, :description) #need top level key.
   end

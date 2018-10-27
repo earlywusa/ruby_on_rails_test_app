@@ -16,7 +16,9 @@ class MyarticlesController < ApplicationController
 
   def create
     # render plain: params.inspect
+    # debugger
     @myarticle = Myarticle.new(article_params)
+    @myarticle.myuser = Myuser.first
     # @myarticle.save
     # render plain: params[:myarticle].inspect
     # redirect_to myarticle_path(@myarticle)

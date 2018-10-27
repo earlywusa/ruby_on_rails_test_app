@@ -7,10 +7,16 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <style media="screen">
+    body {margin: 0px}
+  </style>
   <body>
+    <%= render 'layouts/navigation' %>
     <%= render "layouts/messages" %>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
     <!-- <p>This is a test page</p> -->
+    <%= render 'layouts/footer' %>
   </body>
 </html>
